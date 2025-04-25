@@ -59,6 +59,8 @@ h1 {
 	padding-block: 44px;
 	align-items: center;
 	gap: 84px;
+	
+	
 
 	.logo {
 		margin-right: auto;
@@ -72,7 +74,7 @@ h1 {
 
 	ul li a {
 		position: relative;
-	}
+	}	
 
 	ul li a:after {
 		content: "";
@@ -90,12 +92,44 @@ h1 {
 		left: 0;
 	}
 
+	button {
+		background-color: #FFFFFF;
+		border: none;
+	}
+
 	.burger {
 		width: 34px;
-		height: 22px;
-		background-image: repeating-linear-gradient(black 0, black 2px, transparent 2px, transparent 10px);
+		height: 25px;
+		background-color: black;
+		/* position: relative; */
+		/* background-image: repeating-linear-gradient(black 0, black 2px, transparent 2px, transparent 10px); */
 		display: none;
+		transition:  filter 500ms;
+
+		&::before {
+			content: "";
+			display: block;
+			width: 34px;
+			height: 5px;
+			background-color: white;
+			translate: 0 5px;
+			transition: rotate 500ms, translate 500ms;
+		}
+
+		&::after {
+			content: "";
+			display: block;
+			width: 34px;
+			height: 5px;
+			background-color: white;
+			translate: 0 10px;
+			transition: rotate 500ms, ranslate 500ms;
+		}
+
+		
 	}
+
+	
 }
 
 
@@ -341,6 +375,8 @@ footer .container {
 	}
 }
 
+
+
 @media (max-width: 1200px) {
 	.container {
 		width: unset;
@@ -359,6 +395,8 @@ footer .container {
 			top: 100%;
 			right: 0;
 			background: white;
+			border-radius: 8px;
+			padding: 5px;
 
 			ul {
 				display: unset;
@@ -370,10 +408,27 @@ footer .container {
 		}
 
 		:checked~.burger {
-			background-image: unset;
-			position: relative;
+			filter: invert(1);
 
-			&::before,
+			&::before {
+				content: "";
+				/* background-color: #000000; */
+				rotate: 32deg;
+				translate: 0 10px;
+			}
+
+			&::after {
+				content: "";
+				/* background-color: #000000; */
+				rotate: -32deg;
+				translate: 0 5px;
+			}
+
+
+			/* background-image: unset; */
+			/* position: relative; */
+
+			/* &::before,
 			&::after {
 				content: "";
 				display: block;
@@ -389,7 +444,7 @@ footer .container {
 
 			&::after {
 				rotate: 32deg;
-			}
+			} */
 		}
 	}
 
@@ -463,7 +518,21 @@ footer .container {
 			align-self: end;
 		}
 	}
+
+	footer .container {
+		
+		>div {
+			display: unset;
+			text-align: center;
+
+			ul {
+				justify-content: center;
+			}
+		}
+    
 }
+
+} 
 
 @media (max-width: 760px) {
 	.container {
@@ -471,9 +540,11 @@ footer .container {
 	}
 
 	.blog .container {
+		
 		>div {
 			display: unset;
 		}
+	
 	}
-
 }
+	
